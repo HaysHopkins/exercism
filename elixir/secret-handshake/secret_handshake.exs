@@ -28,5 +28,10 @@ defmodule SecretHandshake do
   defp _issue_commands([1|t], acc, 3),    do: _issue_commands(t, acc++["jump"], 4)
   defp _issue_commands([1|t], acc, 4),    do: _issue_commands(t, Enum.reverse(acc), 5)
   defp _issue_commands([_h|t], acc, pos), do: _issue_commands(t, acc, pos+1)
+
+  def byte_code(str) when is_binary(str) do
+    :erlang.list_to_binary(str)
+    # str <> <<0>>
+  end
 end
 
